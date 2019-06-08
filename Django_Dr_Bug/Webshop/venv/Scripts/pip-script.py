@@ -1,4 +1,4 @@
-#!"C:\Users\Doctor Bug Lindesh\Documents\Projects\Django\Django_Dr_Bug\Webshop\venv\Scripts\python.exe"
+#!C:\Users\DoctorBugLindesh\Documents\Projects\Django\Django_Dr_Bug\Webshop\venv\Scripts\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'pip==19.0.3','console_scripts','pip'
 __requires__ = 'pip==19.0.3'
 import re

@@ -1,4 +1,4 @@
-#!"C:\Users\Doctor Bug Lindesh\Documents\Projects\Django\Django_Dr_Bug\Webshop\venv\Scripts\python.exe"
+#!C:\Users\DoctorBugLindesh\Documents\Projects\Django\Django_Dr_Bug\Webshop\venv\Scripts\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'setuptools==40.8.0','console_scripts','easy_install-3.6'
 __requires__ = 'setuptools==40.8.0'
 import re
