@@ -1,15 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}
     <title>Главная</title>
-    <link rel="stylesheet" href="/static/mainapp/css/style.css"/>
-</head>
-<body>
-    <a href="/">Главная</a>
-    <a href="/products/">Продукты</a>
-    <a href="/contacts/">Контакты</a>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static '/mainapp/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
     <h1 class="red">Главная страница</h1>
+    <h2>Вас встречает {{username|title}}!</h2>
+    <p>Описание пользователя:
+        {% if username == 'doctor bug' %}
+            {% for letter in array %}
+                {{letter|title}}
+            {% endfor %}
+        {% else %}
+            обычный пользователь, даже не баг
+        {% endif %}
+    </p>
     <img src="static/mainapp/img/Doctor_Bug_New_Robot 3.png"/>
-</body>
-</html>
+{% endblock %}

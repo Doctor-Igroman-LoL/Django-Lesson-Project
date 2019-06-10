@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'mainapp/base.html' %}
+
+{% block title %}
     <title>Продукты</title>
-</head>
-<body>
-    <a href="/">Главная</a>
-    <a href="/products/">Продукты</a>
-    <a href="/contacts/">Контакты</a>
+{% endblock %}
+
+{% block content %}
     <h1>Продукты</h1>
-</body>
-</html>
+    <p>Продаем жучков, не дорого!</p>
+    {% include 'mainapp/includes/inc_categories_menu.html' %}
+{% endblock %}

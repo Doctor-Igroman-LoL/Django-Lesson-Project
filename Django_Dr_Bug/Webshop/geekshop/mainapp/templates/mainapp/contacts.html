@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'mainapp/base.html' %}
+
+{% block title %}
     <title>Контакты</title>
-</head>
-<body>
-    <a href="/">Главная</a>
-    <a href="/products/">Продукты</a>
-    <a href="/contacts/">Контакты</a>
+{% endblock %}
+
+{% block content %}
     <h1>Контакты</h1>
-</body>
-</html>
+    <p>Оставляйте здесь ваши данные: логин, пароль, паспортные данные,
+        ИНН и прочее инфо которые позволят оформить на вас кредит =)</p>
+{% endblock %}
