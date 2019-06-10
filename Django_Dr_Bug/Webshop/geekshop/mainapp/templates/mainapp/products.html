@@ -5,9 +5,8 @@
     <title>Продукты</title>
 </head>
 <body>
-    <a href="{% url 'main' %}">Главная</a>
-    <a href="{% url 'products' %}">Продукты</a>
-    <a href="{% url 'contacts' %}">Контакты</a>
+    {% include 'mainapp/includes/inc_menu.html' %}
     <h1>Продукты</h1>
+    <p>Продаем жучков, не дорого!</p>
 </body>
 </html>

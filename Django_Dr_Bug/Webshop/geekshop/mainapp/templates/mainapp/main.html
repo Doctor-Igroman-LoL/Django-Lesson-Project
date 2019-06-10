@@ -6,9 +6,7 @@
     <link rel="stylesheet" href="/static/mainapp/css/style.css"/>
 </head>
 <body>
-    <a href="{% url 'main' %}">Главная</a>
-    <a href="{% url 'products' %}">Продукты</a>
-    <a href="{% url 'contacts' %}">Контакты</a>
+    {% include 'mainapp/includes/inc_menu.html' %}
     <h1 class="red">Главная страница</h1>
     <h2>Вас встречает {{username|title}}!</h2>
     <p>Описание пользователя:

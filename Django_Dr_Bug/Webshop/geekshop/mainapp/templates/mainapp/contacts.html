@@ -5,9 +5,9 @@
     <title>Контакты</title>
 </head>
 <body>
-    <a href="{% url 'main' %}">Главная</a>
-    <a href="{% url 'products' %}">Продукты</a>
-    <a href="{% url 'contacts' %}">Контакты</a>
+    {% include 'mainapp/includes/inc_menu.html' %}
     <h1>Контакты</h1>
+    <p>Оставляйте здесь ваши данные: логин, пароль, паспортные данные,
+        ИНН и прочее инфо которые позволят оформить на вас кредит =)</p>
 </body>
 </html>
