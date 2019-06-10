@@ -1,8 +1,8 @@
 {
   "links_menu": 
   [
-    {"href": "main", "name": "Main"}, 
-    {"href": "products", "name": "Products"}, 
-    {"href": "contacts", "name": "Contacts"}
+    {"href": "main", "name": "Главная"},
+    {"href": "products", "name": "Продукты"},
+    {"href": "contacts", "name": "Контакты"}
   ]
 }

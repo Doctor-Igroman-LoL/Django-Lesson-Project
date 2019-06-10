@@ -5,7 +5,7 @@ import json
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 path = BASE_DIR + '\\mainapp\\db.json'
 
-with open(path, 'r') as f:
+with open(path, 'r', encoding = "utf-8") as f:
     DATA_JSON = json.load(f)
 
 # Create your views here.
