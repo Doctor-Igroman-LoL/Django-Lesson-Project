@@ -11,6 +11,15 @@
     <a href="/contacts/">Контакты</a>
     <h1 class="red">Главная страница</h1>
     <h2>Вас встречает {{username|title}}!</h2>
+    <p>Описание пользователя:
+        {% if username == 'doctor bug' %}
+            {% for letter in array %}
+                {{letter|title}}
+            {% endfor %}
+        {% else %}
+            обычный пользователь, даже не баг
+        {% endif %}
+    </p>
     <img src="static/mainapp/img/Doctor_Bug_New_Robot 3.png"/>
 </body>
 </html>
