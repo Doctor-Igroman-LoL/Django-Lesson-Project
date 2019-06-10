@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'mainapp/base.html' %}
+
+{% block title %}
     <title>Главная</title>
+{% endblock %}
+
+{% block css %}
     <link rel="stylesheet" href="/static/mainapp/css/style.css"/>
-</head>
-<body>
-    {% include 'mainapp/includes/inc_menu.html' %}
+{% endblock %}
+
+{% block content %}
     <h1 class="red">Главная страница</h1>
     <h2>Вас встречает {{username|title}}!</h2>
     <p>Описание пользователя:
@@ -19,5 +21,4 @@
         {% endif %}
     </p>
     <img src="static/mainapp/img/Doctor_Bug_New_Robot 3.png"/>
-</body>
-</html>
+{% endblock %}

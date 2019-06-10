@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'mainapp/base.html' %}
+
+{% block title %}
     <title>Продукты</title>
-</head>
-<body>
-    {% include 'mainapp/includes/inc_menu.html' %}
+{% endblock %}
+
+{% block content %}
     <h1>Продукты</h1>
     <p>Продаем жучков, не дорого!</p>
-</body>
-</html>
+{% endblock %}
