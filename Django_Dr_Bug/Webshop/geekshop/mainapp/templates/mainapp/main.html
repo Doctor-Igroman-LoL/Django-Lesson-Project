@@ -1,11 +1,12 @@
 {% extends 'mainapp/base.html' %}
+{% load static %}
 
 {% block title %}
     <title>Главная</title>
 {% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" href="/static/mainapp/css/style.css"/>
+    <link rel="stylesheet" href="{% static '/mainapp/css/style.css' %}">
 {% endblock %}
 
 {% block content %}
