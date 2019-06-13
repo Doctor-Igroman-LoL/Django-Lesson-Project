@@ -5,7 +5,19 @@
 {% endblock %}
 
 {% block content %}
+    <h1>Категории</h1>
+        <ul>
+            {% for category in products_category %}
+                <li>{{ category.name }}</li>
+            {% endfor %}
+        </ul>
+
     <h1>Продукты</h1>
+        <ul>
+            {% for product in products %}
+                <li>{{ product.name }}</li>
+            {% endfor %}
+        </ul>
     <p>Продаем жучков, не дорого!</p>
     {% include 'mainapp/includes/inc_categories_menu.html' %}
 {% endblock %}
