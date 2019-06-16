@@ -6,7 +6,7 @@ class ShopUser(AbstractUser):
         verbose_name = 'пользователь'
         verbose_name_plural = 'пользователи'
 
-    avatar = models.ImageField(upload_to='users_avatars', blank=true)
+    avatar = models.ImageField(upload_to='users_avatars', blank=True)
     age = models.PositiveIntegerField(verbose_name='возраст')
 
     def __str__(self):
