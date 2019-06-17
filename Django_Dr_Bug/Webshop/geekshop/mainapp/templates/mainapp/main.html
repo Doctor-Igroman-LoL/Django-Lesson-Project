@@ -11,12 +11,10 @@
 
 {% block content %}
     <h1 class="red">Главная страница</h1>
-    <h2>Вас встречает {{username|title}}!</h2>
+
     <p>Описание пользователя:
-        {% if username == 'doctor bug' %}
-            {% for letter in array %}
-                {{letter|title}}
-            {% endfor %}
+        {% if request.user.is_authenticated %}
+            <h2>Вас встречает {{request.user.username|title}}!</h2>
         {% else %}
             обычный пользователь, даже не баг
         {% endif %}
