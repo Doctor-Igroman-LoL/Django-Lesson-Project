@@ -18,7 +18,8 @@ def login(request):
     return render(request, 'authapp/login.html')
 
 def logout(request):
-    pass
+    auth.logout(request)
+    return HttpResponseRedirect(reverse('main'))
 
 class EditView(UpdateView):
     pass
