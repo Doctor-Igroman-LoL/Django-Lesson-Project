@@ -5,7 +5,7 @@ def register(request):
     pass
 
 def login(request):
-    pass
+    return render(request, 'authapp/login.html')
 
 def logout(request):
     pass
