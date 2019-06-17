@@ -1,0 +1,26 @@
+[
+  {
+    "category": "Мягкие игрушки",
+    "name": "Винни-пух",
+    "price": 1000,
+    "quantity": 5
+  },
+  {
+    "category": "Мягкие игрушки",
+    "name": "Потапыч",
+    "price": 2000,
+    "quantity": 1
+  },
+  {
+    "category": "Машинки",
+    "name": "Внедорожник",
+    "price": 5000,
+    "quantity": 7
+  },
+  {
+    "category": "Машинки",
+    "name": "Формула",
+    "price": 7000,
+    "quantity": 15
+  }
+]
