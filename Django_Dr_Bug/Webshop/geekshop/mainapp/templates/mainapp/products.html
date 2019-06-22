@@ -6,11 +6,7 @@
 
 {% block content %}
     <h1>Категории</h1>
-        <ul>
-            {% for product in products %}
-                <li>{{ product.category.pk }}</li>
-            {% endfor %}
-        </ul>
+        {% include 'mainapp/includes/inc_category_menu.html' %}
 
     <h1>Продукты</h1>
         <ul>
@@ -19,5 +15,4 @@
             {% endfor %}
         </ul>
     <p>Продаем жучков, не дорого!</p>
-    {% include 'mainapp/includes/inc_categories_menu.html' %}
 {% endblock %}

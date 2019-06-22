@@ -6,11 +6,12 @@ def main(request):
 
 def products(request, pk=None):
     products = Product.objects.all()
+    print(ProductCategory.objects.all())
 
     if pk:
         category = get_object_or_404(ProductCategory, pk=pk)
         products = products.filter(category=pk)
-    context = {'products': products}
+    context = {'products': products, 'categories': ProductCategory.objects.all()}
     return render(request, 'mainapp/products.html', context)
 
 def contacts(request):
