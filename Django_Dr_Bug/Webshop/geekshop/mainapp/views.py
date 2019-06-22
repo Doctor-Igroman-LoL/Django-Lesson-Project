@@ -1,12 +1,16 @@
-# -*- coding: utf_8 -*-
-from django.shortcuts import render
-from .models import Product
+from django.shortcuts import render, get_object_or_404
+from .models import Product, ProductCategory
 
 def main(request):
     return render(request, 'mainapp/main.html', {'username': 'doctor bug', 'array': ['e', 'r', 'r', 'o', 'r']})
 
 def products(request, pk=None):
-    context = {'products': Product.objects.all()}
+    products = Product.objects.all()
+
+    if pk:
+        category = get_object_or_404(ProductCategory, pk=pk)
+        products = products.filter(category=pk)
+    context = {'products': products}
     return render(request, 'mainapp/products.html', context)
 
 def contacts(request):
