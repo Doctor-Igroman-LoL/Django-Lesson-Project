@@ -9,8 +9,8 @@ class BasketSlot(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField(verbose_name='количество', default=0)
-    add_datetime = models.DateTimeField(verbose_name='время', auto_now_add=True)
+    quantity = models.PositiveIntegerField(verbose_name='количество', default=1)
+    add_datetime = models.DateTimeField(verbose_name='время создания', auto_now_add=True)
 
     def __str__(self):
         return '{} - {}'.format(self.user.username, self.product.name)
