@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import HttpResponseRedirect
 
-# Create your views here.
+def add(request, product_pk=None):
+    print('Добавить ', product_pk)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+def remove(request, product_pk=None):
+    print('Удалить ', product_pk)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

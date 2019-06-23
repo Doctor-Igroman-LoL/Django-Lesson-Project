@@ -11,7 +11,11 @@
     <h1>Продукты</h1>
         <ul>
             {% for product in products %}
-                <li>{{ product.name }}</li>
+                <li>
+                    {{ product.name }}
+                    <a href="{% url 'basket:add' product.pk %}">Добавить в корзину</a>
+                    <a href="{% url 'basket:remove' product.pk %}">Удалить с корзины</a>
+                </li>
             {% endfor %}
         </ul>
     <p>Продаем жучков, не дорого!</p>
