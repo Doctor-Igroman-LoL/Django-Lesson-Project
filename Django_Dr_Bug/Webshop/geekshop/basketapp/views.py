@@ -1,6 +1,10 @@
-from django.shortcuts import HttpResponseRedirect, get_object_or_404
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from basketapp.models import BasketSlot
 from mainapp.models import Product
+
+def basket(request):
+    content = {}
+    return render(request, 'basketapp/basket.html', content)
 
 def add(request, product_pk=None):
     product = get_object_or_404(Product, pk=product_pk)

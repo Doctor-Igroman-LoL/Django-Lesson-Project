@@ -6,12 +6,14 @@ def main(request):
 
 def products(request, pk=None):
     products = Product.objects.all()
-    print(ProductCategory.objects.all())
+    basket = []
+    if request.user:
+        basket = request.user.basket.all()
 
     if pk:
         category = get_object_or_404(ProductCategory, pk=pk)
         products = products.filter(category=pk)
-    context = {'products': products, 'categories': ProductCategory.objects.all()}
+    context = {'products': products, 'categories': ProductCategory.objects.all(), 'basket': basket}
     return render(request, 'mainapp/products.html', context)
 
 def contacts(request):

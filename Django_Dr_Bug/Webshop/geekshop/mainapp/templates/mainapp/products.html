@@ -7,7 +7,7 @@
 {% block content %}
     <h1>Категории</h1>
         {% include 'mainapp/includes/inc_category_menu.html' %}
-
+    <div>Количество продуктов в корзине: {{ basket|length }}</div>
     <h1>Продукты</h1>
         <ul>
             {% for product in products %}
