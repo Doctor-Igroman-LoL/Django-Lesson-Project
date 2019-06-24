@@ -3,8 +3,11 @@ from basketapp.models import BasketSlot
 from mainapp.models import Product
 
 def basket(request):
-    content = {}
-    return render(request, 'basketapp/basket.html', content)
+    basket = []
+    if request.user.is_authenticated:
+        print('E')
+        basket = request.user.basket.all()
+    return render(request, 'basketapp/basket.html', {'basket_items': basket})
 
 def add(request, product_pk=None):
     product = get_object_or_404(Product, pk=product_pk)
