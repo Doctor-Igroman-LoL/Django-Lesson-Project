@@ -21,7 +21,7 @@ def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        next = request.POST.get('next')
+        next = request.POST.get('next') if 'next' in request.GET.keys() else ''
         user = auth.authenticate(username=username, password=password)
         if user and user.is_active:
             auth.login(request, user)
