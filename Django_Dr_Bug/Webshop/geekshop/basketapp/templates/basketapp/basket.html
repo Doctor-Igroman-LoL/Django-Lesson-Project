@@ -12,10 +12,10 @@
     <button class="btn btn-round">
         <a href="{% url 'main' %}">на главную</a>
     </button>
-
+    {{ static }}
 {% endblock %}
 
 {% block js %}
-    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
-    <script src="{% static 'js/basket_scripts.js' %}"></script>
+    <script src="{% static 'mainapp/js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'mainapp/js/basket_scripts.js' %}"></script>
 {% endblock %}

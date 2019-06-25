@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404, HttpResponse
 from basketapp.models import BasketSlot
 from mainapp.models import Product
 from django.contrib.auth.decorators import login_required
@@ -7,7 +7,6 @@ from django.contrib.auth.decorators import login_required
 def basket(request):
     basket = []
     if request.user.is_authenticated:
-        print('E')
         basket = request.user.basket.all()
     return render(request, 'basketapp/basket.html', {'basket_items': basket})
 
@@ -41,4 +40,14 @@ def remove(request, product_pk=None):
 
 @login_required
 def edit(request, pk):
-    pass
+    print('Es')
+    print(request.is_ajax())
+    if request.is_ajax():
+        basket_slot = get_object_or_404(BasketSlot, pk=pk)
+        quantity = int(request.GET.get('quantity'))
+        if quantity > 0:
+            basket_slot.quantity = quantity
+            basket_slot.save()
+        else:
+            basket_slot.delete()
+        return HttpResponse('Ok')
