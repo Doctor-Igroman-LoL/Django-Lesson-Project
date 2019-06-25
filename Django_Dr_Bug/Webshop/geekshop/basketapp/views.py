@@ -38,3 +38,7 @@ def remove(request, product_pk=None):
             basket_slot.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+@login_required
+def edit(request, pk):
+    pass
