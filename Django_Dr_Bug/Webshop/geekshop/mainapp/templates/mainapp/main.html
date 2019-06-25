@@ -1,5 +1,5 @@
 {% extends 'mainapp/base.html' %}
-{% load static %}
+{% load staticfiles %}
 
 {% block title %}
     <title>Главная</title>
@@ -8,12 +8,11 @@
 {% block content %}
     <h1 class="red">Главная страница</h1>
 
-    <p>Описание пользователя:
-        {% if request.user.is_authenticated %}
-            <h2>Вас встречает {{request.user.username|title}}!</h2>
-        {% else %}
-            обычный пользователь, даже не баг
-        {% endif %}
-    </p>
+    {% if request.user.is_authenticated %}
+        <h2>Вас встречает {{request.user.username|title}}!</h2>
+    {% else %}
+        <p>обычный пользователь, даже не баг</p>
+    {% endif %}
+
     <img src="static/mainapp/img/Doctor_Bug_New_Robot 3.png"/>
 {% endblock %}

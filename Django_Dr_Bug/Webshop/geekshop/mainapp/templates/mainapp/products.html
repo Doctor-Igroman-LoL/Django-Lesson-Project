@@ -1,4 +1,6 @@
 {% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+{% load custom_tags %}
 
 {% block title %}
     <title>Продукты</title>
@@ -7,7 +9,8 @@
 {% block content %}
     <h1>Категории</h1>
         {% include 'mainapp/includes/inc_category_menu.html' %}
-    <div>Количество продуктов в корзине: {{ basket|length }}</div>
+    <div>Количество продуктов в корзине: {{ request.user|basket_total_quantity }}</div>
+    <div>Общая стоимость корзины: {{ request.user|basket_total_cost }} руб</div>
     <h1>Продукты</h1>
         <ul>
             {% for product in products %}
