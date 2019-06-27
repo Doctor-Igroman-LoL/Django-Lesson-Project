@@ -7,7 +7,11 @@ from django.views.generic.list import ListView
 from mainapp.models import Product, ProductCategory
 #from .forms import ProductAdminForm
 
-class ProductListView(ListView):
+class IsSuperUserView(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_superuser
+
+class ProductListView(IsSuperUserView, ListView):
     model = Product
     template_name = 'adminapp/products.html'
     queryset = Product.objects.all()
@@ -24,7 +28,7 @@ class ProductListView(ListView):
         context['categories'] = ProductCategory.objects.all()
         return context
 
-class ProductDetailView(DetailView):
+class ProductDetailView(IsSuperUserView, DetailView):
     model = Product
     template_name = 'adminapp/product.html'
 
