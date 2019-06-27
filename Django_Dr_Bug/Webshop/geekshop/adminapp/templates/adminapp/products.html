@@ -12,8 +12,7 @@
 <ul>
 {% for object in object_list %}
     <li>
-        {{ object.name }}
-        {#<a href="{% url 'admin_custom:product_read' object.pk %}">{{ object.name }}</a>#}
+        <a href="{% url 'admin_custom:product_read' object.pk %}">{{ object.name }}</a>
     </li>
 {% endfor %}
 </ul>

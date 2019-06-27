@@ -23,3 +23,13 @@ class ProductListView(ListView):
         context['title'] = 'Все продукты. Админка'
         context['categories'] = ProductCategory.objects.all()
         return context
+
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'adminapp/product.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ProductDetailView, self).get_context_data(**kwargs)
+        title = Product.objects.get(pk=self.kwargs.get('pk')).name
+        context['title'] = '{}. Админка'.format(title)
+        return context
