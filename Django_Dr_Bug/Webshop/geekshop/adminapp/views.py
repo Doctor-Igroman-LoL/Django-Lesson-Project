@@ -10,3 +10,9 @@ from mainapp.models import Product, ProductCategory
 class ProductListView(ListView):
     model = Product
     template_name = 'adminapp/products.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ProductListView, self).get_context_data(**kwargs)
+        context['title'] = 'Все продукты. Админка'
+        context['categories'] = ProductCategory.objects.all()
+        return context
