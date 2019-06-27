@@ -13,10 +13,10 @@ urlpatterns = [
     # url(r'^categories/read/$', adminapp.categories, name='categories'),
     # url(r'^categories/update/(?P<pk>\d+)/$', adminapp.category_update, name='category_update'),
     # url(r'^categories/delete/(?P<pk>\d+)/$', adminapp.category_delete, name='category_delete'),
-    #path('products/create/', adminapp.ProductCreateView.as_view(), name='product_create'),
+    path('products/create/', adminapp.ProductCreateView.as_view(), name='product_create'),
     path('products/read/', adminapp.ProductListView.as_view(), name='products'),
     path('products/read/category/<int:category_pk>/', adminapp.ProductListView.as_view(), name='products_by_category'),
     path('products/read/<int:pk>/', adminapp.ProductDetailView.as_view(), name='product_read'),
     #path('products/update/<int:pk>/', adminapp.ProductUpdateView.as_view(), name='product_update'),
-    #path('products/delete/<int:pk>/', adminapp.ProductDeleteView.as_view(), name='product_delete'),
+    path('products/delete/<int:pk>/', adminapp.ProductDeleteView.as_view(), name='product_delete'),
 ]

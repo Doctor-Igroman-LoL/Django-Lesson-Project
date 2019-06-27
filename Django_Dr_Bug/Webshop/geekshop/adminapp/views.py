@@ -37,3 +37,25 @@ class ProductDetailView(IsSuperUserView, DetailView):
         title = Product.objects.get(pk=self.kwargs.get('pk')).name
         context['title'] = '{}. Админка'.format(title)
         return context
+
+class ProductCreateView(IsSuperUserView, CreateView):
+    model = Product
+    template_name = 'adminapp/product_update.html'
+    success_url = reverse_lazy('admin_custom:products')
+    fields = '__all__'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ProductCreateView, self).get_context_data(**kwargs)
+        context['title'] = 'Создание нового продукта. Админка'
+        return context
+
+class ProductDeleteView(IsSuperUserView, DeleteView):
+    model = Product
+    template_name = 'adminapp/product_delete.html'
+    success_url = reverse_lazy('admin_custom:products')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ProductDeleteView, self).get_context_data(**kwargs)
+        title = Product.objects.get(pk=self.kwargs.get('pk')).name
+        context['title'] = 'Удаление {}. Админка'.format(title)
+        return context
