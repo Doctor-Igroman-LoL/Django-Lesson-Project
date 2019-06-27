@@ -10,6 +10,13 @@ from mainapp.models import Product, ProductCategory
 class ProductListView(ListView):
     model = Product
     template_name = 'adminapp/products.html'
+    queryset = Product.objects.all()
+
+    def get_queryset(self):
+        queryset = super(ProductListView, self).get_queryset()
+        if self.kwargs.get('category_pk'):
+            queryset = queryset.filter(category=self.kwargs.get('category_pk'))
+        return queryset
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ProductListView, self).get_context_data(**kwargs)
