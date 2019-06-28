@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import UserPassesTestMixin
-from django.shortcuts import HttpResponseRedirect, get_object_or_404
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
@@ -83,8 +83,6 @@ class UserListView(IsSuperUserView, ListView):
 
     def get_queryset(self):
         queryset = super(UserListView, self).get_queryset()
-        print(self.kwargs.get('superuser_pk'))  #self.kwargs.get('superuser_pk')
-        print(self.request.user.is_superuser)
         superuser = 0
         if self.kwargs.get('superuser_pk') == None:
             superuser = 0
@@ -139,3 +137,10 @@ class UserUpdateView(IsSuperUserView, UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('admin_custom:user_read', kwargs={'pk': self.kwargs.get('pk')})
+
+def user_delete(request, pk=None):
+    user = get_object_or_404(ShopUser, pk=pk)
+    user.is_active = False
+    user.save()
+    return render(request, 'adminapp/users.html')
+

@@ -5,15 +5,12 @@ import adminapp.views as adminapp
 app_name = 'adminapp'
 
 urlpatterns = [
-    # url(r'^users/create/$', adminapp.user_create, name='user_create'),
     path('users/create/', adminapp.UserCreateView.as_view(), name='user_create'),
     path('users/read/', adminapp.UserListView.as_view(), name='users'),
     path('users/read/superuser/<int:superuser_pk>/', adminapp.UserListView.as_view(), name='users_by_superusers'),
     path('users/read/<int:pk>/', adminapp.UserDetailView.as_view(), name='user_read'),
     path('users/update/<int:pk>/', adminapp.UserUpdateView.as_view(), name='user_update'),
-    # url(r'^users/read/$', adminapp.users, name='users'),
-    # url(r'^users/update/(?P<pk>\d+)/$', adminapp.user_update, name='user_update'),
-    # url(r'^users/delete/(?P<pk>\d+)/$', adminapp.user_delete, name='user_delete'),
+    path('users/delete/<int:pk>/', adminapp.user_delete, name='user_delete'),
     # url(r'^categories/create/$', adminapp.category_create,name='category_create'),
     # url(r'^categories/read/$', adminapp.categories, name='categories'),
     # url(r'^categories/update/(?P<pk>\d+)/$', adminapp.category_update, name='category_update'),
