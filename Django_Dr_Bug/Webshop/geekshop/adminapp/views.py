@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
 from mainapp.models import Product, ProductCategory
+from authapp.models import ShopUser
 #from .forms import ProductAdminForm
 
 class IsSuperUserView(UserPassesTestMixin):
@@ -74,3 +75,67 @@ class ProductUpdateView(IsSuperUserView, UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('admin_custom:product_read', kwargs={'pk': self.kwargs.get('pk')})
+
+class UserListView(IsSuperUserView, ListView):
+    model = ShopUser
+    template_name = 'adminapp/users.html'
+    queryset = ShopUser.objects.all()
+
+    def get_queryset(self):
+        queryset = super(UserListView, self).get_queryset()
+        print(self.kwargs.get('superuser_pk'))  #self.kwargs.get('superuser_pk')
+        print(self.request.user.is_superuser)
+        superuser = 0
+        if self.kwargs.get('superuser_pk') == None:
+            superuser = 0
+        else:
+            superuser = self.kwargs.get('superuser_pk')
+        if superuser == 0:
+            pass
+        elif ShopUser.objects.get(pk=superuser).is_superuser:
+            queryset = queryset.filter(is_superuser=True)
+        elif not ShopUser.objects.get(pk=superuser).is_superuser:
+            queryset = queryset.filter(is_superuser=False)
+        return queryset
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(UserListView, self).get_context_data(**kwargs)
+        context['title'] = 'Все пользователи. Админка'
+        context['superusers'] = ShopUser.objects.all()
+        return context
+
+class UserCreateView(IsSuperUserView, CreateView):
+    model = ShopUser
+    template_name = 'adminapp/product_update.html'
+    success_url = reverse_lazy('admin_custom:users')
+    fields = '__all__'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(UserCreateView, self).get_context_data(**kwargs)
+        context['title'] = 'Создание нового пользователя. Админка'
+        return context
+
+class UserDetailView(IsSuperUserView, DetailView):
+    model = ShopUser
+    template_name = 'adminapp/user.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(UserDetailView, self).get_context_data(**kwargs)
+        title = ShopUser.objects.get(pk=self.kwargs.get('pk')).username
+        context['title'] = '{}. Админка'.format(title)
+        return context
+
+class UserUpdateView(IsSuperUserView, UpdateView):
+    model = ShopUser
+    template_name = 'adminapp/product_update.html'
+    success_url = reverse_lazy('admin_custom:users')
+    fields = '__all__'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(UserUpdateView, self).get_context_data(**kwargs)
+        title = ShopUser.objects.get(pk=self.kwargs.get('pk')).username
+        context['title'] = 'Изменение {}. Админка'.format(title)
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('admin_custom:user_read', kwargs={'pk': self.kwargs.get('pk')})

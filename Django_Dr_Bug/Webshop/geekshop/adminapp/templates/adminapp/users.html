@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+<h2>Статус пользователя:</h2>
+    {% include 'adminapp/includes/inc_superuser_menu.html' %}
+<h2>Пользователи</h2>
+<a href="{% url 'admin_custom:user_create' %}">Создать новый пользователя</a>
+<ul>
+{% for object in object_list %}
+    <li>
+        <a href="{% url 'admin_custom:user_read' object.pk %}">{{ object.username|title }}</a>
+    </li>
+{% endfor %}
+</ul>
+</body>
+</html>

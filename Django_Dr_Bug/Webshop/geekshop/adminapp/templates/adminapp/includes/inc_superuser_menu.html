@@ -1,0 +1,21 @@
+
+<ul>
+    <li><a>
+        <a href="{% url 'admin_custom:users' %}" class="{% if request.resolver_match.kwargs.pk == 0 %}
+            active
+        {% endif %} menu-item">
+        Все</a>
+    </a></li>
+    <li>
+        <a href="{% url 'admin_custom:users_by_superusers' 1 %}" class="{% if request.resolver_match.kwargs.pk == 1 %}
+            active
+        {% endif %} menu-item">
+        Суперпользователь</a>
+    </li>
+    <li>
+        <a href="{% url 'admin_custom:users_by_superusers' 2 %}" class="{% if request.resolver_match.kwargs.pk == 2 %}
+            active
+        {% endif %} menu-item">
+        Пользователь</a>
+    </li>
+</ul>
