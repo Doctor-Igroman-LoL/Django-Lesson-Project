@@ -144,3 +144,7 @@ def user_delete(request, pk=None):
     user.save()
     return render(request, 'adminapp/users.html')
 
+class CategoryListView(IsSuperUserView, ListView):
+    model = ProductCategory
+    template_name = 'adminapp/categories.html'
+    queryset = ProductCategory.objects.all()

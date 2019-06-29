@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+<h2>Категории</h2>
+
+{#<a href="{% url 'admin_custom:category_create' %}">Создать новую категорию</a>#}
+<ul>
+{% for object in object_list %}
+    <li>
+        {{ object.name }}
+    </li>
+{% endfor %}
+</ul>
+</body>
+</html>
