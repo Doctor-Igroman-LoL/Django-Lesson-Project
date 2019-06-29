@@ -40,3 +40,9 @@ class EditView(UpdateView):
     template_name = 'authapp/register.html'
     fields = 'username', 'email', 'avatar'
     success_url = reverse_lazy('main')
+
+    def get_context_data(self, **kwargs):
+        context = super(EditView, self).get_context_data(**kwargs)
+        context['title'] = 'Редактирование профиля'
+        context['submit_label'] = 'Применить'
+        return context

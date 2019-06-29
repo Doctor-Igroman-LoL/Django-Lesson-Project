@@ -40,8 +40,6 @@ def remove(request, product_pk=None):
 
 @login_required
 def edit(request, pk):
-    print('Es')
-    print(request.is_ajax())
     if request.is_ajax():
         basket_slot = get_object_or_404(BasketSlot, pk=pk)
         quantity = int(request.GET.get('quantity'))
