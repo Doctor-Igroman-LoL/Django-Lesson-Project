@@ -176,3 +176,14 @@ class CategoryUpdateView(IsSuperUserView, UpdateView):
         title = ProductCategory.objects.get(pk=self.kwargs.get('pk')).name
         context['title'] = 'Изменение {}. Админка'.format(title)
         return context
+
+class CategoryDeleteView(IsSuperUserView, DeleteView):
+    model = ProductCategory
+    template_name = 'adminapp/product_delete.html'
+    success_url = reverse_lazy('admin_custom:categories')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(CategoryDeleteView, self).get_context_data(**kwargs)
+        title = ProductCategory.objects.get(pk=self.kwargs.get('pk')).name
+        context['title'] = 'Удаление {}. Админка'.format(title)
+        return context

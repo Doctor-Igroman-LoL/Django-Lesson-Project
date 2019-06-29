@@ -13,6 +13,7 @@
     <li>
         {{ object.name|title }}
         <a href="{% url 'admin_custom:category_update' object.pk %}">Редактировать</a>
+        <a href="{% url 'admin_custom:category_delete' object.pk %}">Удалить</a>
     </li>
 {% endfor %}
 </ul>
