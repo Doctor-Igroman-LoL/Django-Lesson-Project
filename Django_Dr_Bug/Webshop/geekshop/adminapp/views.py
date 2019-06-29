@@ -148,3 +148,31 @@ class CategoryListView(IsSuperUserView, ListView):
     model = ProductCategory
     template_name = 'adminapp/categories.html'
     queryset = ProductCategory.objects.all()
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(CategoryListView, self).get_context_data(**kwargs)
+        context['title'] = 'Категории. Админка'
+        return context
+
+class CategoryCreateView(IsSuperUserView, CreateView):
+    model = ProductCategory
+    template_name = 'adminapp/product_update.html'
+    success_url = reverse_lazy('admin_custom:categories')
+    fields = '__all__'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(CategoryCreateView, self).get_context_data(**kwargs)
+        context['title'] = 'Создание новой категорий. Админка'
+        return context
+
+class CategoryUpdateView(IsSuperUserView, UpdateView):
+    model = ProductCategory
+    template_name = 'adminapp/product_update.html'
+    success_url = reverse_lazy('admin_custom:categories')
+    fields = '__all__'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(CategoryUpdateView, self).get_context_data(**kwargs)
+        title = ProductCategory.objects.get(pk=self.kwargs.get('pk')).name
+        context['title'] = 'Изменение {}. Админка'.format(title)
+        return context
