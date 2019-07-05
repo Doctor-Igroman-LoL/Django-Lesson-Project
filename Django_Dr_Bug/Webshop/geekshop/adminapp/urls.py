@@ -1,10 +1,10 @@
 from django.urls import path
+#import adminapp.views as adminapp
 
-import adminapp.views as adminapp
-
-app_name = 'adminapp'
+#app_name = 'adminapp'
 
 urlpatterns = [
+    path('users/', adminapp.UserListView.as_view(), name='users'),
     path('users/create/', adminapp.UserCreateView.as_view(), name='user_create'),
     path('users/read/', adminapp.UserListView.as_view(), name='users'),
     path('users/read/superuser/<int:superuser_pk>/', adminapp.UserListView.as_view(), name='users_by_superusers'),
@@ -22,3 +22,7 @@ urlpatterns = [
     path('products/update/<int:pk>/', adminapp.ProductUpdateView.as_view(), name='product_update'),
     path('products/delete/<int:pk>/', adminapp.ProductDeleteView.as_view(), name='product_delete'),
 ]
+
+#import adminapp.views as adminapp
+#app_name = 'adminapp'
+

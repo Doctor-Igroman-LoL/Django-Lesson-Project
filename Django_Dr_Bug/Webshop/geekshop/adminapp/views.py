@@ -83,17 +83,10 @@ class UserListView(IsSuperUserView, ListView):
 
     def get_queryset(self):
         queryset = super(UserListView, self).get_queryset()
-        superuser = 0
-        if self.kwargs.get('superuser_pk') == None:
-            superuser = 0
-        else:
-            superuser = self.kwargs.get('superuser_pk')
-        if superuser == 0:
-            pass
-        elif ShopUser.objects.get(pk=superuser).is_superuser:
-            queryset = queryset.filter(is_superuser=True)
-        elif not ShopUser.objects.get(pk=superuser).is_superuser:
-            queryset = queryset.filter(is_superuser=False)
+        is_superuser = bool(self.request.GET.get('is_superuser'))
+
+        if is_superuser:
+            queryset.filter(is_superuser=is_superuser)
         return queryset
 
     def get_context_data(self, *, object_list=None, **kwargs):
