@@ -34,3 +34,4 @@ class Command(BaseCommand):
         # Создаем суперпользователя при помощи менеджера модели
         ShopUser.objects.all().delete()
         ShopUser.objects.create_superuser('admin', 'admin@geekshop.local', 'admin', age=19)
+        ShopUser.objects.create_superuser('admin2', 'admin2@geekshop.local', 'admin', age=19)
