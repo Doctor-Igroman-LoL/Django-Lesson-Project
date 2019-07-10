@@ -1,10 +1,16 @@
 from django.core.management.base import BaseCommand
 from mainapp.models import ProductCategory, Product
 from authapp.models import ShopUser
+from configparser import RawConfigParser
 
 import json, os
 
 JSON_PATH = 'mainapp/json'
+CONF_PATH = 'conf/'
+
+local_config_path = os.path.join( 'conf', 'local.conf')
+config = RawConfigParser()
+config.read(local_config_path)
 
 def loadFromJSON(file_name):
     with open(os.path.join(JSON_PATH, file_name + '.json'), 'r', encoding = "utf-8") as infile:
@@ -33,4 +39,7 @@ class Command(BaseCommand):
 
         # Создаем суперпользователя при помощи менеджера модели
         ShopUser.objects.all().delete()
-        ShopUser.objects.create_superuser('admin', 'admin@geekshop.local', 'admin', age=19)
+        username = config.get('admin', 'USERNAME')
+        email = config.get('admin', 'EMAIL')
+        age = config.get('admin', 'AGE')
+        ShopUser.objects.create_superuser(username, email, username, age=age)
